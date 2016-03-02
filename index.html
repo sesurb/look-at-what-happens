@@ -1,17 +1,51 @@
 <html ng-app="guess">
+
 <head>
 	<meta charset="UTF-8">
 	<title>Guess Who</title>
 	<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 	<link rel="stylesheet" href="assets/styles/game.css">
 </head>
-<body>
-	
-	
+
+<body ng-controller="GameController" class="container">
+
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<div class="pull-right">
+				<button ng-click="startGame()" ng-show="!game">Start Game</button>
+				<button ng-click="startGame()" ng-show="game">New Game</button>
+				<div class="alert" ng-show="game" ng-class="{'alert-success': game.guesses < 5, 'alert-warning': game.guesses >= 5 && game.guesses < 8, 'alert-danger': game.guesses >= 8 }">Guesses Remaining: {{10 - game.guesses}} {{game.message}}
+				</div>
+			</div>
+			<h3>Guess Who</h3>
+
+			<div class="controls" ng-show="game">
+				Character Traits... Cost: {{game.traitsCost}}
+				<div class="btn-group" ng-show="game">
+					<button type="button" ng-repeat="prop in game.propertyList" ng-click="propertyCheck(prop)" ng-show="!prop.used" class="btn btn-default">{{prop.name}}</button>
+				</div>
+			</div>
+
+		</div>
+		<div class="panel-body text-center">
+			<ul class="list-inline">
+				<li class="list-group-item" ng-if="game.computerChoice">
+					<img ng-src="{{game.computerChoice.url}}" alt="{{game.computerChoice.name}}" height="128" class="character">
+				</li>
+				<li class="list-group-item" ng-repeat="character in game.characters" ng-if="!game.computerChoice">
+					<img ng-src="{{character.url}}" ng-show="character.possible" alt="{{character.name}}" height="128" class="character" ng-click="guess(character)">
+					<img src="assets/img/back.jpg" ng-show="!character.possible" alt="{{character.name}}" height="128" class="character">
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
 	<script src="bower_components/angular/angular.js"></script>
 	<script src="app/config/init.js"></script>
 	<script src="app/game/game-service-manager.js"></script>
 	<script src="app/game/characters-service.js"></script>
 	<script src="app/game/game-controller.js"></script>
 </body>
+
 </html>

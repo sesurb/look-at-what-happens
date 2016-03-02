@@ -83,7 +83,7 @@ app.factory('CharactersService', function(){
 	},{
 		name: 'Bowser',
 		traits: ['animal', 'male', 'jumps'],
-		url: '/assets/img/boweser.jpg'
+		url: '/assets/img/bowser.jpg'
 	},{
 		name: 'Yoshi',
 		traits: ['animal', 'jumps'],
@@ -91,7 +91,7 @@ app.factory('CharactersService', function(){
 	},{
 		name: 'Villager',
 		traits: ['child', 'male'],
-		url: '/assets/img/village.jpg'
+		url: '/assets/img/villager.jpg'
 	},{
 		name: 'Ness',
 		traits: ['child', 'male', 'weapon', 'magic', 'hat'],
@@ -150,7 +150,7 @@ app.factory('CharactersService', function(){
 		var propertyList = {};
 		characters.forEach(function(character){
 			character.traits.forEach(function(trait){
-				propertyList[trait] = trait;
+				propertyList[trait] = {name: trait};
 			})
 		});
 		return propertyList;
