@@ -1,0 +1,23 @@
+{
+  "name": "guess-who",
+  "authors": [
+    "joverall22 <joverall22@gmail.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+	"dependencies": {
+		"angular": "*",
+		"bootstrap": "*"
+	}
+}
