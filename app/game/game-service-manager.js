@@ -80,7 +80,7 @@ app.service('GameManager', function(CharactersService){
 	}
 	
 	function setRandomChoice(){
-		var randI = Math.floor(Math.random() * _game.characters.length - 1);
+		var randI = Math.floor(Math.random() * _game.characters.length);
 		_computerChoice = _game.characters[randI];
 	}
 	
